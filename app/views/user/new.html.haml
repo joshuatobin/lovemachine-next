@@ -1,0 +1,15 @@
+= simple_form_for @user, :url => "/user" do |f|
+
+  -if @user.errors.any?
+    %h2
+      = pluralize(@user.errors.count, "error")
+      "Prohibited from this user being saved"
+    %ul
+      - @user.errors.full_messages.each do |msg|
+        %li= msg
+
+  = f.input :name
+  = f.input :email
+  = f.button :submit
+
+= link_to 'Back', :back
